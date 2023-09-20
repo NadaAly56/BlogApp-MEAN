@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from '../services/blog.service';
+import { MessageService } from '../services/message.service';
+import { SocketIoService } from '../services/socket.io.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -8,13 +10,12 @@ import { BlogService } from '../services/blog.service';
 })
 export class AdminComponent implements OnInit {
 
-  token: any;
+  token: any = localStorage.getItem('token')
   data:any
   id:string = ''
   type:String = 'article'
   isLoading:boolean = true
-  isOpen:boolean = false
-  isChatOpen:boolean = false
+
 
   @ViewChild('close') close:any
   @ViewChild('closeDelete') closeDelete:any
@@ -26,12 +27,14 @@ export class AdminComponent implements OnInit {
     type:new FormControl('')
   })
 
-  constructor(private _BlogService: BlogService){
-   this.token = localStorage.getItem('token')
+  constructor(private _BlogService: BlogService,
+     private socket: SocketIoService){
   }
 
   ngOnInit(): void {
+
     this.getUserBlogs()
+
   }
 
   getID(id:string) {
@@ -75,14 +78,5 @@ export class AdminComponent implements OnInit {
     )
   }
 
-  openMessages(){
-    if (this.isOpen == false) this.isOpen = true
-    else this.isOpen = false
-  }
-
-  openChat(){
-    if (this.isChatOpen == false) this.isChatOpen = true
-    else this.isChatOpen = false
-  }
 
 }

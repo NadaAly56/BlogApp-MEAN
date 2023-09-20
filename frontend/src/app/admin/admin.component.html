@@ -134,24 +134,7 @@
         </div>
         <!-- Chaatttt ---------------------- -->
         <!-- -------------------------------------- -->
-        <button
-        (click)="openMessages()"
-        [style]="isOpen?'bottom: 350px; right:0':'bottom:0;right:0'"
-        class="messagesBtn px-5 py-2 w-25 me-4 rounded-bottom-0 btn btn-info  text-white position-fixed">
-        Messages</button>
 
-          <div *ngIf="isOpen" class="messages bg-white p-3 pt-1 w-25 position-fixed bottom-0 end-0 me-4">
-            <button (click)="openChat()" [class.d-none]="isChatOpen" class="btn w-100 text-start">
-              <div *ngIf="!isChatOpen" class="border-bottom p-2">
-                Person 1
-              </div>
-            </button>
-              <div *ngIf="isChatOpen" class="h-100">
-                <i (click)="openChat()" class="fa-solid fa-arrow-left pointer mt-0 py-0"></i>
-                <div class="bg-info p-1 m-2 position-fixed bottom-0 rounded">Message Text here</div>
-              </div>
-
-          </div>
       </div>
     </div>
   </div>

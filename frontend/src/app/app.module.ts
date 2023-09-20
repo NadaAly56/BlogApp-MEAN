@@ -9,13 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ErrorComponent } from './error/error.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NotAllwoedComponent } from './not-allwoed/not-allwoed.component';
 import { NewsComponent } from './news/news.component';
 import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -31,13 +32,15 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NotAllwoedComponent,
     NewsComponent,
     EmailConfirmedComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     DatePipe

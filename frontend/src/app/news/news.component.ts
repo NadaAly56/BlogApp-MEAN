@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BlogService } from '../services/blog.service';
+import { DataSharingService } from '../services/data-sharing.service';
 
 @Component({
   selector: 'app-news',
@@ -11,7 +12,8 @@ export class NewsComponent implements OnInit {
   data:any
   id:string = ''
 
-  constructor(private _BlogService:BlogService){
+  constructor(private _BlogService:BlogService,
+    private dataSharing: DataSharingService){
     this.token = localStorage.getItem('token')
   }
 
@@ -23,5 +25,9 @@ export class NewsComponent implements OnInit {
     this._BlogService.getAllBlogs(this.token).subscribe(data=>{
       this.data = data.blogs
     })
+  }
+
+  getID(id:string){
+    this.dataSharing.setId(id)
   }
 }
